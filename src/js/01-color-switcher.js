@@ -18,9 +18,9 @@ function onBtnStartClick() {
 }
 
 function onBtnStopClick() {
-  clearInterval(timerID);
   btnStart.removeAttribute('disabled');
   btnStop.setAttribute('disabled', 'true');
+  clearInterval(timerID);
 }
 
 function getRandomHexColor() {
