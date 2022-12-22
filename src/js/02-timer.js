@@ -44,6 +44,8 @@ const options = {
 flatpickr(inputPicker, options);
 
 function onBtnStartClick(selectedDates) {
+  inputPicker.setAttribute('disabled', 'true');
+
   timerID = setInterval(() => {
     const timeLeftMs = selectedDates - Date.now();
     const timeLeft = convertMs(timeLeftMs);
