@@ -46,16 +46,20 @@ function onBtnStartClick(selectedDates) {
   timerID = setInterval(() => {
     const timeLeftMs = selectedDates - Date.now();
     const timeLeft = convertMs(timeLeftMs);
-    fieldDays.textContent = timeLeft.days;
-    fieldHours.textContent = timeLeft.hours;
-    fieldMinutes.textContent = timeLeft.minutes;
-    fieldSeconds.textContent = timeLeft.seconds;
+    fieldDays.textContent = addLeadingZero(timeLeft.days);
+    fieldHours.textContent = addLeadingZero(timeLeft.hours);
+    fieldMinutes.textContent = addLeadingZero(timeLeft.minutes);
+    fieldSeconds.textContent = addLeadingZero(timeLeft.seconds);
 
     if (timeLeftMs < 1000) {
       clearInterval(timerID);
     }
     console.log('timeLeft :>> ', timeLeft);
   }, 1000);
+}
+
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
 }
 
 function convertMs(ms) {
