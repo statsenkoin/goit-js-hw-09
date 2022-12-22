@@ -13,7 +13,8 @@ const fieldSeconds = document.querySelector('[data-seconds]');
 let timerID = null;
 
 btnStart.setAttribute('disabled', 'true');
-// btnStart.addEventListener('click', onBtnStartClick);
+
+styleTimer();
 
 const options = {
   enableTime: true,
@@ -79,6 +80,21 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
+}
+
+function styleTimer() {
+  const timerEl = document.querySelector('.timer');
+  const fieldEl = document.querySelectorAll('.field');
+  const valueEl = document.querySelectorAll('.value');
+  timerEl.style.display = 'flex';
+  timerEl.style.marginTop = '20px';
+  timerEl.style.gap = '10px';
+  fieldEl.forEach(el => {
+    el.style.display = 'flex';
+    el.style.flexDirection = 'column';
+    el.style.alignItems = 'center';
+  });
+  valueEl.forEach(el => (el.style.fontSize = '52px'));
 }
 
 // console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
