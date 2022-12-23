@@ -41,18 +41,18 @@ function onBtnStartClick() {
 
   timerID = setInterval(() => {
     const timeLeftMs = selectedDate - Date.now();
-    const timeLeft = convertMs(timeLeftMs);
+    const { days, hours, minutes, seconds } = convertMs(timeLeftMs);
 
     if (timeLeftMs < 1000) {
       clearInterval(timerID);
     }
 
-    fieldDays.textContent = addLeadingZero(timeLeft.days);
-    fieldHours.textContent = addLeadingZero(timeLeft.hours);
-    fieldMinutes.textContent = addLeadingZero(timeLeft.minutes);
-    fieldSeconds.textContent = addLeadingZero(timeLeft.seconds);
+    fieldDays.textContent = addLeadingZero(days);
+    fieldHours.textContent = addLeadingZero(hours);
+    fieldMinutes.textContent = addLeadingZero(minutes);
+    fieldSeconds.textContent = addLeadingZero(seconds);
 
-    console.log('timeLeft :>> ', timeLeft);
+    console.log('timeLeft :>> ', convertMs(timeLeftMs));
   }, 1000);
 }
 
